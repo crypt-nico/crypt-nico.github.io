@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <style>
+      canvas#main_canvas{
+        float: left;
+        
+        border: 1px solid #000000;
+      }
+    </style>
+    <script src="./js/jquery-2.1.4.js" charset="UTF-8">/* do nothing even if the js file is not found */</script>
+  </head>
+  <body>
+    <canvas id="main_canvas" width="640" height="640"></canvas>
+    <br>
+    <br>
+    棒の長さは <input id="answer_field" type="text" size="5"> cm <input id="answer_button" type="button" onclick="answer();" value="に見える"><br>
+    （小数入力可）<br>
+    <br>
+    <span id="result"></span><br>
+    <br>
+    <br>
+    <input type="button" onclick="func();" value="次の問題へ (クリック or Nキー)">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="clear: left">
+      ログ:<br>
+      <textarea id="log" style="width: 640px; height: 120px;"></textarea>
+    </div>
+    <script src="main.js" charset="UTF-8">/* do nothing even if the js file is not found */</script>
+  </body>
+</html>
