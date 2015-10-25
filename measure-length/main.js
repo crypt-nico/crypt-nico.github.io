@@ -34,6 +34,7 @@ function formatDate(date, format) {
 var 仮想キャンバスの幅 = 10.0;
 var 仮想キャンバスの高さ = 10.0;
 
+var 太さ0の棒の伸長方向;
 var 箱の仮想キャンバスにおける長さ;
 var 太さ0の棒の仮想キャンバスにおける長さ;
 var 箱のCanvasElementCoordinateにおける長さ;
@@ -49,9 +50,27 @@ function func(){
   
   var 箱の仮想キャンバスにおける縦位置 = 8.0;
   箱の仮想キャンバスにおける長さ = 10.0 * (0.1 + 0.9 * Math.random());
-  var 太さ0の棒の仮想キャンバスにおける始点 = [仮想キャンバスの幅 / 2.0, 仮想キャンバスの高さ / 2.0];
-  var 太さ0の棒の仮想キャンバスにおける伸長方向 = 2.0 * Math.PI * Math.random();
-  太さ0の棒の仮想キャンバスにおける長さ = 5.0 * (0.1 + 0.9 * Math.random());
+  var 太さ0の棒の仮想キャンバスにおける始点 = [仮想キャンバスの幅 * (0.01 + 0.98 * Math.random()), 箱の仮想キャンバスにおける縦位置 * (0.01 + 0.98 * Math.random())];
+  {
+    var 太さ0の棒の仮想キャンバスにおける終点;
+    
+    do{
+        太さ0の棒の伸長方向 = 2.0 * Math.PI * Math.random()
+        太さ0の棒の仮想キャンバスにおける長さ = (0.5 + 9.5 * Math.random());
+        
+        太さ0の棒の仮想キャンバスにおける終点 = [
+          太さ0の棒の仮想キャンバスにおける始点[0]
+          + 太さ0の棒の仮想キャンバスにおける長さ * Math.cos(太さ0の棒の伸長方向),
+          太さ0の棒の仮想キャンバスにおける始点[1]
+          - 太さ0の棒の仮想キャンバスにおける長さ * Math.sin(太さ0の棒の伸長方向)
+        ];
+    }while(
+      太さ0の棒の仮想キャンバスにおける終点[0] < 0.1
+      || 太さ0の棒の仮想キャンバスにおける終点[0] > 9.9
+      || 太さ0の棒の仮想キャンバスにおける終点[1] < 0.1
+      || 太さ0の棒の仮想キャンバスにおける終点[1] > 箱の仮想キャンバスにおける縦位置 - 0.1
+    );
+  }
   
   var rate_物理空間_divide_仮想キャンバス = 100.0 / 箱の仮想キャンバスにおける長さ;
   
@@ -69,7 +88,6 @@ function func(){
       var 箱のCanvasElementCoordinateにおける縦位置 = 箱の仮想キャンバスにおける縦位置 * rate;
       箱のCanvasElementCoordinateにおける長さ = 箱の仮想キャンバスにおける長さ * rate;
       var 太さ0の棒のCanvasElementCoordinateにおける始点 = 太さ0の棒の仮想キャンバスにおける始点.map( function(val, index, array){ return val * rate; } );
-      var 太さ0の棒のCanvasElementCoordinateにおける伸長方向 = 太さ0の棒の仮想キャンバスにおける伸長方向 * rate;
       太さ0の棒のCanvasElementCoordinateにおける長さ = 太さ0の棒の仮想キャンバスにおける長さ * rate;
           
       
@@ -96,9 +114,9 @@ function func(){
       context.moveTo(太さ0の棒のCanvasElementCoordinateにおける始点[0], 太さ0の棒のCanvasElementCoordinateにおける始点[1]);
       context.lineTo(
         太さ0の棒のCanvasElementCoordinateにおける始点[0]
-        + 太さ0の棒のCanvasElementCoordinateにおける長さ * Math.cos(太さ0の棒のCanvasElementCoordinateにおける伸長方向),
+        + 太さ0の棒のCanvasElementCoordinateにおける長さ * Math.cos(太さ0の棒の伸長方向),
         太さ0の棒のCanvasElementCoordinateにおける始点[1]
-        - 太さ0の棒のCanvasElementCoordinateにおける長さ * Math.sin(太さ0の棒のCanvasElementCoordinateにおける伸長方向)
+        - 太さ0の棒のCanvasElementCoordinateにおける長さ * Math.sin(太さ0の棒の伸長方向)
       );
       context.stroke();
       
@@ -137,6 +155,7 @@ function answer(){
     $('#log').val()
     + '--------------------------------' + '\n'
     + '[' + formatDate(new Date(), 'YYYY/MM/DD hh:mm:ss') + ']\n'
+    + 'bar_angle[rad]=' + 太さ0の棒の伸長方向 + '\n'
     + 'box_width(internal)=' + 箱の仮想キャンバスにおける長さ + '\n'
     + 'bar_length(internal)=' + 太さ0の棒の仮想キャンバスにおける長さ + '\n'
     + 'box_width(on display)=' + 箱のCanvasElementCoordinateにおける長さ + '\n'
