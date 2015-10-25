@@ -136,6 +136,7 @@ function answer(){
   $('#log').val(
     $('#log').val()
     + '--------------------------------' + '\n'
+    + '[' + formatDate(new Date(), 'YYYY/MM/DD hh:mm:ss') + ']\n'
     + 'box_width(internal)=' + 箱の仮想キャンバスにおける長さ + '\n'
     + 'bar_length(internal)=' + 太さ0の棒の仮想キャンバスにおける長さ + '\n'
     + 'box_width(on display)=' + 箱のCanvasElementCoordinateにおける長さ + '\n'
