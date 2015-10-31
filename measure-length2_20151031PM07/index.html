@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <style>
+      body{
+        font-size: 14pt;
+      }
+      
+      canvas#main_canvas{
+        border: 1px solid #000000;
+      }
+    </style>
+    <script src="./js/jquery-2.1.4.js" charset="UTF-8">/* do nothing even if the js file is not found */</script>
+  </head>
+  <body>
+    <div style="float: left;">
+      <canvas id="main_canvas" width="640" height="640"></canvas>
+    </div>
+    <div style="float: left;">
+      <br>
+      <span id="level_label"></span><br>
+      <span id="currentSerialClearedCount_label"></span><br>
+      <br>
+      <span style="display: inline-block; width: 150px; text-align: right; font-size: 30px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; vertical-align: middle;">
+        <span id="lineSegmentA_label" style="color: rgba(0, 0, 0, 0.8);"></span> : <input id="answer_field" type="text" maxlength="3" style="margin: 0; border: 1px solid rgba(231, 114, 166, 0.8); padding: 4px; width: 60px; outline: none; color: rgba(231, 114, 166, 0.8); ime-mode: disabled;"></input>
+      </span><br>
+      <br>
+      <span id="tutorial_label">Enter キーで解答</span><span id="isCorrect_label"></span><br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      ※注: 右辺は、左辺の 0.5-2.0 倍の範囲に収まります
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br style="clear: left">
+    <div>
+      ログ:<br>
+      <textarea id="log" wrap="off" style="width: 640px; height: 120px; font-size: 10pt;"></textarea>
+    </div>
+    <script src="main.js" charset="UTF-8">/* do nothing even if the js file is not found */</script>
+  </body>
+</html>
