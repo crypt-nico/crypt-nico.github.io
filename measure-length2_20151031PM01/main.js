@@ -29,7 +29,7 @@ function formatDate(date, format) {
 
 
 var appName = 'measure-length2';
-var appVer = '20151031AM04';
+var appVer = '20151031PM01';
 
 
 // 仮想キャンバス  ─<座標変換>→  HTML Canvas element coordinate
@@ -247,14 +247,18 @@ function func(){
       return [lineSegmentA_Position, lineSegmentB_Position];
     }
 
-    [lineSegmentA_Position, lineSegmentB_Position] = getLineSegmentPositions(
-      widgetWidth_internal * 0.96, // 線分に太さがあることを考慮して、線分が壁に密着しないようにする
-      widgetHeight_internal * 0.96,
-      0.5,
-      lineSegmentA_Angle,
-      lineSegmentB_Angle,
-      ratioOfLineSegments
-      );
+    {
+      var tmp = getLineSegmentPositions(
+        widgetWidth_internal * 0.96, // 線分に太さがあることを考慮して、線分が壁に密着しないようにする
+        widgetHeight_internal * 0.96,
+        0.5,
+        lineSegmentA_Angle,
+        lineSegmentB_Angle,
+        ratioOfLineSegments
+        );
+      lineSegmentA_Position = tmp[0];
+      lineSegmentB_Position = tmp[1];
+    }
     lineSegmentA_Position = [
       [widgetWidth_internal*0.02 + lineSegmentA_Position[0][0], widgetHeight_internal*0.02 + lineSegmentA_Position[0][1]],
       [widgetWidth_internal*0.02 + lineSegmentA_Position[1][0], widgetHeight_internal*0.02 + lineSegmentA_Position[1][1]]
