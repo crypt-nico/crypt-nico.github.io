@@ -29,7 +29,7 @@ function formatDate(date, format) {
 
 
 var appName = 'measure-length2';
-var appVer = '20151031PM06';
+var appVer = '20151031PM06-02';
 
 
 // 仮想キャンバス  ─<座標変換>→  HTML Canvas element coordinate
@@ -156,8 +156,10 @@ function func(){
   
   widgetWidth_internal = 10.0;
   widgetHeight_internal = 10.0;
+  
+  // ダイナミックレンジが 1:8 未満の場合 minLengthOfLongerLS の方しか使われない
   var minLengthOfShorterLS = 0.5; // 短い方の辺の最小値
-  var minLengthOfLongerLS = 6.0; // 長い方の辺の最小値
+  var minLengthOfLongerLS = 4.0; // 長い方の辺の最小値
   var lineSegmentWidth_internal = 0.1;
   
   var lineSegmentA_Position;
