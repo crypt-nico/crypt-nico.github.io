@@ -33,7 +33,7 @@ function formatDate(date, format) {
 // define a world
 var World = {
   appName: 'find-direction',
-  appVer: 'NoVersion',
+  appVer: '20151116AM10',
   
   mainModel: {
     // 3次元空間の表現には右手系（xz平面が水平面、y軸が鉛直上方向）を使用
@@ -104,20 +104,11 @@ var World = {
       
       var translatedLines;
       {
-        var T = 
-        //Math.sin(World.mainModel.data.dynamic.cameraAngle_phi)
-        //GLM.mat4.invert(GLM.mat4.create(),
-          GLM.mat4.lookAt(GLM.mat4.create(),
-            [Math.sin(World.mainModel.data.dynamic.cameraAngle_phi), 0.5, -Math.cos(World.mainModel.data.dynamic.cameraAngle_phi)],
-            [0, 0, 0],
-            [0, 1, 0]
-            )
-          //GLM.mat4.multiply(buf3,
-          //  GLM.mat4.ortho(buf2, -3.0, 3.0, -3.0, 3.0, 0.0, 1000.0),
-          //  GLM.mat4.lookAt(buf, [1.0, 1.0, -1.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0])
-          //  )
-        //)
-        ;
+        var T = GLM.mat4.lookAt(GLM.mat4.create(),
+          [Math.sin(World.mainModel.data.dynamic.cameraAngle_phi), 0.5, -Math.cos(World.mainModel.data.dynamic.cameraAngle_phi)],
+          [0, 0, 0],
+          [0, 1, 0]
+          );
         
         translatedLines = World.mainModel.data.static_.cube.map(function(value_line, index, array){
           return [
