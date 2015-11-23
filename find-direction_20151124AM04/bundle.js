@@ -33,7 +33,7 @@ function formatDate(date, format) {
 // define a world
 var World = {
   appName: 'find-direction',
-  appVer: '20151116AM10',
+  appVer: '20151124AM04',
   
   mainModel: {
     // 3次元空間の表現には右手系（xz平面が水平面、y軸が鉛直上方向）を使用
